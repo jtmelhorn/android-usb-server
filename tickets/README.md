@@ -65,7 +65,7 @@ Rules that override convenience:
 | [019](TICKET-019.md) | Reproducible APK build and release packaging | 12 | done | P0 | 002 |
 | [020](TICKET-020.md) | Documentation: README, Windows setup, architecture | 12 | in_progress | P0 | 010 (final), 019 |
 | [021](TICKET-021.md) | Rumble / force feedback (interrupt OUT) | 11 | backlog | P3 | 010 |
-| [022](TICKET-022.md) | Publish source to GitHub | 12 | in_progress | P1 | 019 |
+| [022](TICKET-022.md) | Publish source to GitHub | 12 | done | P1 | 019 |
 
 Statuses in this table are kept in sync with each ticket's header.
 

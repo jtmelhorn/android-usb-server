@@ -1,6 +1,6 @@
 # TICKET-022: Publish source to GitHub
 
-- **Status:** in_progress
+- **Status:** done
 - **Milestone:** 12
 - **Priority:** P1
 - **Dependencies:** 019
@@ -36,3 +36,11 @@ build exists (binary not committed to git).
 
 ## Remaining uncertainties / blockers
 - Push depends on local git credentials for GitHub being available.
+
+## Evidence (2026-10-25)
+- `git push -u origin main` → `* [new branch] main -> main`; `git ls-remote origin main` →
+  `1d54f6afa3b9175e9432ce047dff8cd6a7f4a94d refs/heads/main`.
+- `git ls-files` (83 files) contains no keystores, `local.properties`, `.so`, `.apk` or `target/`.
+- Limitation: no GitHub Release created (`gh` CLI not installed). The APK is built locally to
+  `dist/` with `SHA256SUMS`; attaching it to a release is a follow-up for the user or a later session.
+
