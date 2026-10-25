@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg">#FF101418</color>
+    <color name="fg">#FFE8EAED</color>
+    <color name="muted">#FF9AA0A6</color>
+    <color name="accent">#FF76B900</color>
+    <color name="focus">#FF2E3B4A</color>
+
+    <style name="AppTheme" parent="@android:style/Theme.DeviceDefault.NoActionBar">
+        <item name="android:windowBackground">@color/bg</item>
+        <item name="android:textColor">@color/fg</item>
+        <item name="android:colorAccent">@color/accent</item>
+    </style>
+
+    <style name="Transparent" parent="@android:style/Theme.Translucent.NoTitleBar">
+        <item name="android:windowNoDisplay">true</item>
+    </style>
+
+    <style name="TvButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:minWidth">200dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:background">@drawable/button_bg</item>
+        <item name="android:textColor">@color/fg</item>
+        <item name="android:padding">14dp</item>
+        <item name="android:focusable">true</item>
+    </style>
+</resources>

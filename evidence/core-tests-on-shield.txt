@@ -1,0 +1,10 @@
+== aarch64-linux-android (target/aarch64-linux-android/debug/deps/usbipcore-feb3cc34ec694268)
+target/aarch64-linux-android/debug/deps/usbipcore-feb3cc34ec694268: 1 file pushed, 0 skipped. 75.4 MB/s (13637496 bytes in 0.172s)
+test server::tests::port_in_use_reported ... ok
+test server::tests::devlist_import_stream_unlink_reconnect_stop ... ok
+test result: ok. 64 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.33s
+== armv7-linux-androideabi (target/armv7-linux-androideabi/debug/deps/usbipcore-6c0bdef10d73b992)
+target/armv7-linux-androideabi/debug/deps/usbipcore-6c0bdef10d73b992: 1 file pushed, 0 skipped. 82.4 MB/s (11683468 bytes in 0.135s)
+test server::tests::port_in_use_reported ... ok
+test server::tests::devlist_import_stream_unlink_reconnect_stop ... ok
+test result: ok. 64 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.37s

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 320x180 Leanback banner: dark card with a USB-style glyph. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="320dp"
+    android:height="180dp"
+    android:viewportWidth="320"
+    android:viewportHeight="180">
+    <path android:fillColor="#FF101418" android:pathData="M0,0h320v180h-320z" />
+    <path android:fillColor="#FF76B900" android:pathData="M60,84h200v12h-200z" />
+    <path android:fillColor="#FF76B900" android:pathData="M60,90m-22,0a22,22 0,1 1,44 0a22,22 0,1 1,-44 0" />
+    <path android:fillColor="#FFE8EAED" android:pathData="M250,70l30,20l-30,20z" />
+    <path android:fillColor="#FFE8EAED" android:pathData="M130,60h24v20h-24z" />
+    <path android:fillColor="#FFE8EAED" android:pathData="M190,110m-12,0a12,12 0,1 1,24 0a12,12 0,1 1,-24 0" />
+</vector>

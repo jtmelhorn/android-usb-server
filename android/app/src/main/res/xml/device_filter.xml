@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Vendors the 8BitDo USB Wireless Adapter 2 can present as, depending on its mode:
+     8BitDo (0x2dc8), Microsoft / XInput (0x045e), Sony / DualShock 4 mode (0x054c),
+     Nintendo / Switch mode (0x057e). -->
+<resources>
+    <usb-device vendor-id="11720" />
+    <usb-device vendor-id="1118" />
+    <usb-device vendor-id="1356" />
+    <usb-device vendor-id="1406" />
+</resources>

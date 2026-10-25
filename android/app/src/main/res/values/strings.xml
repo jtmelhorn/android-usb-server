@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">USB/IP Gamepad Bridge</string>
+    <string name="devices">USB devices</string>
+    <string name="no_devices">No USB devices found. Plug in the 8BitDo adapter.</string>
+    <string name="grant">Grant permission</string>
+    <string name="start">Start sharing</string>
+    <string name="stop">Stop sharing</string>
+    <string name="probe">Probe device</string>
+    <string name="settings">Settings</string>
+    <string name="refresh">Refresh</string>
+    <string name="run_probe">Run 10 s capture</string>
+    <string name="save">Save</string>
+    <string name="port">TCP port (default 3240)</string>
+    <string name="allowed_client">Only allow this PC (IP address, empty = any local-network address)</string>
+    <string name="verbose">Verbose URB log (diagnostics only; adds per-transfer logging)</string>
+    <string name="channel_name">Sharing status</string>
+</resources>

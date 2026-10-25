@@ -1,0 +1,19 @@
+# Build outputs
+core/target/
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/.idea/
+*.iml
+dist/
+
+# Signing material must never be committed
+*.jks
+*.keystore
+*.p12
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/

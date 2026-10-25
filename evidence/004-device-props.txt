@@ -1,0 +1,23 @@
+# Shield device properties (collected 2026-10-25T02:23:59Z via adb)
+model=SHIELD Android TV
+device=mdarcy
+android=11 sdk=30
+fingerprint=NVIDIA/mdarcy/mdarcy:11/RQ1A.210105.003/7825230_4387.0822:user/release-keys
+abilist=arm64-v8a,armeabi-v7a,armeabi
+kernel=4.9.141-tegra-gb6e5605a
+security_patch=2026-01-05
+
+## /dev/bus/usb
+/dev/bus/usb/001/:
+001
+
+/dev/bus/usb/002/:
+001
+
+/dev/bus/usb/003/:
+001
+
+## dumpsys usb (host section)
+  host_manager={
+    num_connects=0
+  }
