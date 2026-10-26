@@ -9,7 +9,7 @@
     <string name="probe">Probe device</string>
     <string name="settings">Settings</string>
     <string name="refresh">Refresh</string>
-    <string name="run_probe">Run 10 s capture</string>
+    <string name="run_probe">Run 30 s capture</string>
     <string name="save">Save</string>
     <string name="port">TCP port (default 3240)</string>
     <string name="allowed_client">Only allow this PC (IP address, empty = any local-network address)</string>

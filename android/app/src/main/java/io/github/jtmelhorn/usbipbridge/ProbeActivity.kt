@@ -54,7 +54,7 @@ class ProbeActivity : Activity() {
         running = true
         Thread({
             try {
-                UsbProbe(this, d, ::append).run(10)
+                UsbProbe(this, d, ::append).run(30)
             } finally {
                 running = false
             }

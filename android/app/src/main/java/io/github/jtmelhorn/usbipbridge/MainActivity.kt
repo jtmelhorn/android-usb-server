@@ -104,11 +104,15 @@ class MainActivity : Activity() {
     }
 
     private fun refreshDevices() {
+        // Rebuilding the list drops focus; remember which row had it so D-pad users stay in place.
+        val focusedIndex = (0 until deviceList.childCount).indexOfFirst { deviceList.getChildAt(it).hasFocus() }
         deviceList.removeAllViews()
         val devices = UsbDevices.list(this)
         if (devices.isEmpty()) deviceList.addView(Ui.text(this, getString(R.string.no_devices), 16f))
-        // Auto-select when exactly one device is present and nothing is selected yet.
-        if (devices.size == 1 && prefs.selectedVid < 0) prefs.select(devices[0])
+        // With exactly one device present, select it unless the selection already matches. The
+        // 8BitDo adapter changes VID:PID when it switches mode, which would otherwise leave a stale
+        // selection and a disabled "Grant permission" button (TICKET-023).
+        if (devices.size == 1 && !prefs.matches(devices[0])) prefs.select(devices[0])
         val usb = UsbDevices.manager(this)
         for (d in devices) {
             val mark = if (prefs.matches(d)) "✓ " else "   "
@@ -121,6 +125,7 @@ class MainActivity : Activity() {
                     .apply { bottomMargin = Ui.dp(this@MainActivity, 8) }
             })
         }
+        if (focusedIndex in 0 until deviceList.childCount) deviceList.getChildAt(focusedIndex).requestFocus()
         render()
     }
 

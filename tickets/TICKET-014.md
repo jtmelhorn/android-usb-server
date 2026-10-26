@@ -48,3 +48,7 @@ A single main screen, fully D-pad navigable, with a Leanback launcher entry.
   *Start sharing*, attach command with the Shield's real IP, empty-device message.
 - Leanback launcher entry: `aapt2 dump badging` shows `leanback-launchable-activity` and banner.
 - Remote walk-through with a device present pending TICKET-004.
+
+## Hardware use (2026-10-26)
+- Full flow operated with D-pad key events only: select device, Grant permission (system dialog),
+  Probe, Start/Stop sharing. Found and fixed TICKET-023 (stale selection / disabled button).

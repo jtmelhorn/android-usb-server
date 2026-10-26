@@ -52,3 +52,13 @@ obtained from `UsbDeviceConnection.getFileDescriptor()`.
   **and on the Shield as both aarch64 and armv7 binaries** (`evidence/core-tests-on-shield.txt`), so
   the 32-bit layout is checked on real hardware.
 - Criteria 3–4 (real URBs on the adapter) blocked by TICKET-004.
+
+## Hardware evidence (2026-10-26, `evidence/005-client-test.txt`)
+- Real URBs on the adapter through the server: control IN (descriptors, vendor request), control
+  stall forwarded (`-32`), interrupt OUT (`01 03 06`, 3 bytes), interrupt IN queued.
+- Criterion 4 **PASS**: CMD_UNLINK of a pending interrupt-IN URB → `USBDEVFS_DISCARDURB` →
+  `RET_UNLINK -104 (-ECONNRESET)` in 1.6 ms; on client disconnect the server logged
+  `discarded 3 pending transfer(s)` and returned to listening.
+- Finding: `USBDEVFS_GET_SPEED` returns `ENOTTY` on the Shield's 4.9 kernel; the fallback (full speed
+  for USB 2.0 devices) is correct for this adapter but would misreport a high-speed device.
+- Criterion 3 (reports flowing to Windows) pending TICKET-010 / TICKET-024.

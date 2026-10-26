@@ -60,6 +60,26 @@ class UsbProbe(private val ctx: Context, private val device: UsbDevice, private 
                 if (ok) claimed += itf else allClaimed = false
             }
 
+            // Xbox 360-class pads from third parties (8BitDo among them) may stay silent until the host
+            // sends this vendor request. Windows' xusb22 sends it during start-up and newer Linux xpad
+            // drivers do too ("magic message"); older kernels such as the Shield's 4.9 do not. Over
+            // USB/IP the Windows driver issues it itself, so this is only needed for the probe.
+            val first = device.getInterface(0)
+            if (first.interfaceClass == 0xff && first.interfaceSubclass == 0x5d && first.interfaceProtocol == 0x01) {
+                val reply = ByteArray(20)
+                val n = conn.controlTransfer(0xC1, 0x01, 0x0100, 0x00, reply, reply.size, 250)
+                log("XInput init request (0xC1/0x01 wValue 0x0100, 20 bytes) -> $n: ${reply.take(maxOf(n, 0)).joinToString(" ") { "%02x".format(it) }}")
+                // Player-1 LED command on the first interrupt-OUT endpoint, as the Windows driver and
+                // xpad send when a pad is assigned a slot.
+                val out = (0 until first.endpointCount).map { first.getEndpoint(it) }
+                    .firstOrNull { it.type == UsbConstants.USB_ENDPOINT_XFER_INT && it.direction == UsbConstants.USB_DIR_OUT }
+                if (out != null) {
+                    val led = byteArrayOf(0x01, 0x03, 0x06)
+                    val w = conn.bulkTransfer(out, led, led.size, 250)
+                    log("LED player-1 command on ep 0x%02x -> %d".format(out.address, w))
+                }
+            }
+
             val inEps = mutableListOf<UsbEndpoint>()
             for (itf in claimed) for (e in 0 until itf.endpointCount) {
                 val ep = itf.getEndpoint(e)

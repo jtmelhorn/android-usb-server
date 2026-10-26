@@ -59,3 +59,10 @@ single-threaded `poll()` loop over {client socket, usb fd, wake eventfd/pipe}.
   Shield** (500 interrupt reports over TCP, unlink → -ECONNRESET, client vanish + reconnect, stop
   while attached < 2 s).
 - Criterion 3 (usbip-win2 interop) pending TICKET-010.
+
+## Hardware evidence (2026-10-26)
+- `tools/usbip-client-test.py` from the PC (192.168.15.133) against the Shield server with the real
+  adapter: DEVLIST (17.9 ms), IMPORT, device/config/string descriptors, SET_CONFIGURATION intercept,
+  vendor request, interrupt OUT, interrupt IN queueing, UNLINK — all as specified
+  (`evidence/005-client-test.txt`). Server log: `client 192.168.15.133 attached 1-1` …
+  `detached` … `discarded 3 pending transfer(s)`.

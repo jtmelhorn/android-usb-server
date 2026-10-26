@@ -1,6 +1,6 @@
 # TICKET-005: [HW] 8BitDo descriptor and transfer inspection (XInput mode)
 
-- **Status:** blocked
+- **Status:** in_progress
 - **Milestone:** 3 — USB descriptor and transfer inspection
 - **Priority:** P0
 - **Dependencies:** 004
@@ -39,4 +39,10 @@ issues during enumeration and play, with any unsupported request identified.
   to keep the input path quiet).
 
 ## Remaining uncertainties / blockers
-- Blocked by TICKET-004 (Shield access).
+- Windows-driven trace blocked by TICKET-010 (usbip-win2 not yet installed on the PC).
+
+## Evidence so far (2026-10-26)
+- Criterion 1 done: `docs/8bitdo-descriptors.md` (decoded from raw bytes read through the USB/IP
+  server, `evidence/005-client-test.txt`).
+- Partial request classification recorded there (client-driven); the Windows-driven URB trace
+  (criterion 2) is pending TICKET-010.

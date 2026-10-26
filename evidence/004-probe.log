@@ -1,0 +1,27 @@
+--------- beginning of main
+--------- beginning of system
+10-26 11:18:53.828 I/UsbIpProbe(22286): === probe 8BitDo Controller  [045e:028e]  interfaces: ff/5d/01 ff/5d/03 ff/5d/02 ff/fd/13 ===
+10-26 11:18:53.829 I/UsbIpProbe(22286): android 11 (API 30) NVIDIA SHIELD Android TV abis=arm64-v8a, armeabi-v7a, armeabi
+10-26 11:18:53.829 I/UsbIpProbe(22286): fingerprint NVIDIA/mdarcy/mdarcy:11/RQ1A.210105.003/7825230_4387.0822:user/release-keys
+10-26 11:18:53.829 I/UsbIpProbe(22286): device /dev/bus/usb/001/015 class ff/ff/ff
+10-26 11:18:53.830 I/UsbIpProbe(22286): interface 0 alt 0: class ff/5d/01, 2 endpoint(s)
+10-26 11:18:53.830 I/UsbIpProbe(22286):   ep 0x81 interrupt IN maxPacket 32 interval 4
+10-26 11:18:53.830 I/UsbIpProbe(22286):   ep 0x02 interrupt OUT maxPacket 32 interval 8
+10-26 11:18:53.830 I/UsbIpProbe(22286): interface 1 alt 0: class ff/5d/03, 2 endpoint(s)
+10-26 11:18:53.830 I/UsbIpProbe(22286):   ep 0x83 interrupt IN maxPacket 32 interval 2
+10-26 11:18:53.830 I/UsbIpProbe(22286):   ep 0x04 interrupt OUT maxPacket 32 interval 4
+10-26 11:18:53.830 I/UsbIpProbe(22286): interface 2 alt 0: class ff/5d/02, 1 endpoint(s)
+10-26 11:18:53.830 I/UsbIpProbe(22286):   ep 0x86 interrupt IN maxPacket 32 interval 16
+10-26 11:18:53.830 I/UsbIpProbe(22286): interface 3 alt 0: class ff/fd/13, 0 endpoint(s)
+10-26 11:18:53.836 I/UsbIpProbe(22286): raw descriptors (157 bytes): 12 01 00 02 ff ff ff 40 5e 04 8e 02 14 01 01 02 03 01 09 02 8b 00 04 01 00 a0 fa 09 04 00 00 02 ff 5d 01 00 11 21 10 01 01 25 81 14 03 03 03 04 13 02 08 03 03 07 05 81 03 20 00 04 07 05 02 03 20 00 08 09 04 01 00 02 ff 5d 03 00 1b 21 00 01 01 01 83 40 01 04 20 16 85 00 00 00 00 00 00 16 05 00 00 00 00 00 00 07 05 83 03 20 00 02 07 05 04 03 20 00 04 09 04 02 00 01 ff 5d 02 00 09 21 00 01 01 22 86 07 00 07 05 86 03 20 00 10 09 04 03 00 00 ff fd 13 04 06 41 00 01 01 03
+10-26 11:18:53.836 I/UsbIpProbe(22286): usbfs fd = 60
+10-26 11:18:53.885 I/UsbIpProbe(22286): claimInterface(0, force=true) -> true
+10-26 11:18:53.887 I/UsbIpProbe(22286): claimInterface(1, force=true) -> true
+10-26 11:18:53.887 I/UsbIpProbe(22286): claimInterface(2, force=true) -> true
+10-26 11:18:53.888 I/UsbIpProbe(22286): claimInterface(3, force=true) -> true
+10-26 11:18:53.903 I/UsbIpProbe(22286): capturing for 10 s — press buttons and move sticks now…
+10-26 11:19:03.923 I/UsbIpProbe(22286): ep 0x81: 0 reports, 0 with changed payload
+10-26 11:19:03.923 I/UsbIpProbe(22286): ep 0x83: 0 reports, 0 with changed payload
+10-26 11:19:03.924 I/UsbIpProbe(22286): ep 0x86: 0 reports, 0 with changed payload
+10-26 11:19:03.924 I/UsbIpProbe(22286): RESULT: claimed interfaces but no reports arrived (is the controller connected to the adapter?)
+10-26 11:19:03.929 I/UsbIpProbe(22286): released interfaces; Android's own driver may now re-bind

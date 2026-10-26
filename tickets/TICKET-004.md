@@ -56,9 +56,8 @@ Physical procedure (needs the user):
   Android 11+ blocks nothing here except devices with audio/MTP handled by system services.
 
 ## Remaining uncertainties / blockers
-- **BLOCKED on physical action:** plug the 8BitDo USB Wireless Adapter 2 into the Shield with the
-  controller connected (XInput mode if selectable). As of 2026-10-25 02:25 UTC the Shield showed only
-  its three root hubs (`/dev/bus/usb/00{1,2,3}/001`).
+- **Blocked on criterion 5 only** — see TICKET-024: the adapter produced no input reports on the
+  Shield in XInput mode, for this app *and* for Android's own `xpad` driver.
 - Whether the 8BitDo adapter's XInput mode is selectable when connected to the Shield (it may
   auto-select a mode based on host OS detection); the Probe records the VID:PID actually presented.
 
@@ -70,3 +69,17 @@ Physical procedure (needs the user):
 - APK installed (`adb install -r` → Success) and launched; process running, no crash; native
   library loaded (`core: usbipcore 0.1.0` on screen) — `evidence/014-main-screen-no-device.png`.
 - Criteria 2–7 pending the physical action above.
+
+## Hardware results (2026-10-26) — `evidence/004-probe.log`, `evidence/004-probe-input.log`
+| # | Criterion | Result |
+|---|---|---|
+| 1 | Device facts | PASS (see above) |
+| 2 | Adapter listed with VID:PID and interfaces | PASS — `8BitDo Controller [045e:028e]`, interfaces `ff/5d/01 ff/5d/03 ff/5d/02 ff/fd/13` (`evidence/004-main-with-adapter.png`) |
+| 3 | Permission dialog granted with the remote | PASS — system dialog "Allow USB/IP Gamepad Bridge to access Controller?" answered OK via D-pad key events (adb `input keyevent`, i.e. the same remote key codes); "Always open" left unticked |
+| 4 | `claimInterface(force=true)` for every interface | **PASS** — true for interfaces 0, 1, 2, 3 (repeated in 5 runs) |
+| 5 | ≥100 reports with changing payload | **FAIL so far** — 0 reports in every capture while the user pressed buttons; Android's own `xpad` also saw 0 events → TICKET-024 |
+| 6 | Android stops seeing the controller while claimed | PASS (kernel side) — `EventHub: Removed device: path=/dev/input/event6 name=Microsoft X-Box 360 pad` at claim time; re-added after release |
+| 7 | Limitation explained | The access path is **not** limited by Android: an unrooted app on Android 11 can open the adapter, detach the kernel driver and own every interface and endpoint. The open question is the adapter's own behaviour (TICKET-024). |
+
+Architecture gate: criteria 2–4 and 6 prove the forwarding architecture is feasible on this Shield
+without root, so TICKET-009 proceeds.

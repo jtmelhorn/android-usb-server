@@ -48,3 +48,8 @@ hands the fd and raw descriptors to the Rust core over JNI, and releases everyth
 ## Evidence so far
 - Implemented: `BridgeService.kt`, `NativeBridge.kt`, `jni_bridge.rs`. App installs and runs on the
   Shield; JNI library loads (version string shown). Start/stop on hardware pending TICKET-004.
+
+## Hardware evidence (2026-10-26)
+- *Start sharing* on the Shield: service opened the adapter, claimed all interfaces, started the
+  native server (`USB/IP server listening on port 3240`, `server thread nice set to -10`), served a
+  LAN client, and *Stop sharing* released it. Moonlight/background behaviour pending TICKET-011.

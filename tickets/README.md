@@ -48,7 +48,7 @@ Rules that override convenience:
 | [002](TICKET-002.md) | Toolchain assessment and project skeleton | 1 | done | P0 | 001 |
 | [003](TICKET-003.md) | Licensing and existing-code assessment | 1 | done | P0 | 001 |
 | [004](TICKET-004.md) | **[HW]** Shield USB access feasibility with the 8BitDo adapter | 2 | blocked | P0 | 002 |
-| [005](TICKET-005.md) | **[HW]** 8BitDo descriptor and transfer inspection (XInput mode) | 3 | blocked | P0 | 004 |
+| [005](TICKET-005.md) | **[HW]** 8BitDo descriptor and transfer inspection (XInput mode) | 3 | in_progress | P0 | 004 |
 | [006](TICKET-006.md) | USB/IP protocol codec (Rust) | 4 | done | P0 | 002, 003 |
 | [007](TICKET-007.md) | usbdevfs URB engine (submit / reap / discard) | 4 | in_progress | P0 | 002 |
 | [008](TICKET-008.md) | USB/IP server session and event loop | 4 | in_progress | P0 | 006, 007 |
@@ -66,6 +66,8 @@ Rules that override convenience:
 | [020](TICKET-020.md) | Documentation: README, Windows setup, architecture | 12 | in_progress | P0 | 010 (final), 019 |
 | [021](TICKET-021.md) | Rumble / force feedback (interrupt OUT) | 11 | backlog | P3 | 010 |
 | [022](TICKET-022.md) | Publish source to GitHub | 12 | done | P1 | 019 |
+| [023](TICKET-023.md) | BUG: stale selection after adapter mode change | 8 | done | P1 | 014 |
+| [024](TICKET-024.md) | **[HW]** Adapter sends no input reports on Shield in XInput mode | 3 | blocked | P0 | 004 |
 
 Statuses in this table are kept in sync with each ticket's header.
 
@@ -93,7 +95,7 @@ Statuses in this table are kept in sync with each ticket's header.
 | Do not weaken Windows security or install unsigned drivers | 010, 020 |
 | One controller via 8BitDo adapter; no audio / arbitrary devices / isochronous | 008 (isochronous rejected), 015 (single device) |
 | Rumble after reliable input | 021 |
-| Validate incrementally steps 1–6 | 004, 010, 010, 011, 017, 018 |
+| Validate incrementally steps 1–6 | 004, 024, 010, 011, 017, 018 |
 | Distinguish report interval, network RTT, button-to-screen latency | 016, 018 |
 | Buildable source, sideloadable APK, license and notices, Windows setup, test results | 019, 020, 003, 022 |
 | Meaningful tests: protocol, cancellation, malformed requests, lifecycle failures, reconnection | 006, 008, 012 |
