@@ -55,3 +55,17 @@ triggered by the app.
 - Root cause inside the adapter is unknown; the causal link to the app's claim is a hypothesis based on
   timing (claim at 11:13:30, switch to XInput at 11:13:58, no input afterwards until power cycle).
 - Needs a user-present hardware session.
+
+## Update (2026-10-26 13:15)
+- **`2dc8:3107` is the adapter's idle identity**, reported by Android as product name **"8BitDo IDLE"**
+  with a single HID interface (`03/00/00`). It appears whenever no controller is connected (e.g. the
+  DualShock went to sleep) and switches to XInput `045e:028e` when a controller connects. It is not a
+  host-detection mode as first assumed; the hypothesis above is revised accordingly.
+- The original stuck state therefore followed sharing being started on the IDLE device (claimed with
+  force) and the adapter then switching to XInput while claimed. Root cause still unconfirmed.
+- Criterion 1 observed on device: with the controller asleep, the app listed `8BitDo IDLE [2dc8:3107]`
+  and did **not** auto-select it (selection stayed `045e:028e`).
+- Sustained run before the controller slept: 493,374 interrupt-IN reports forwarded, 1 error total
+  (the known vendor-request stall), report interval p50 4.00 / p99 8.01 / max 8.02 ms, server
+  turnaround p50 0.03 / p99 0.06 / max 0.13 ms (verbose off). Supports TICKET-017.
+

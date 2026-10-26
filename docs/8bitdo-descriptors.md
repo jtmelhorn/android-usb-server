@@ -9,7 +9,7 @@ Read through this project's USB/IP server by `tools/usbip-client-test.py` (raw b
 
 | Time | VID:PID | Meaning |
 |---|---|---|
-| 11:11:55 | `2dc8:3107` | 8BitDo's own mode, shown on first attach |
+| 11:11:55 | `2dc8:3107` | **"8BitDo IDLE"**: single HID interface, shown while no controller is connected |
 | 11:13:58 → | `045e:028e` | XInput (Xbox 360 wired controller) |
 
 The adapter re-enumerated on its own several times (device number 015 → 017 within minutes),
