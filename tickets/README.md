@@ -47,13 +47,13 @@ Rules that override convenience:
 | [001](TICKET-001.md) | Ticket system and initial backlog | 1 | done | P0 | — |
 | [002](TICKET-002.md) | Toolchain assessment and project skeleton | 1 | done | P0 | 001 |
 | [003](TICKET-003.md) | Licensing and existing-code assessment | 1 | done | P0 | 001 |
-| [004](TICKET-004.md) | **[HW]** Shield USB access feasibility with the 8BitDo adapter | 2 | blocked | P0 | 002 |
-| [005](TICKET-005.md) | **[HW]** 8BitDo descriptor and transfer inspection (XInput mode) | 3 | in_progress | P0 | 004 |
+| [004](TICKET-004.md) | **[HW]** Shield USB access feasibility with the 8BitDo adapter | 2 | done | P0 | 002 |
+| [005](TICKET-005.md) | **[HW]** 8BitDo descriptor and transfer inspection (XInput mode) | 3 | done | P0 | 004 |
 | [006](TICKET-006.md) | USB/IP protocol codec (Rust) | 4 | done | P0 | 002, 003 |
-| [007](TICKET-007.md) | usbdevfs URB engine (submit / reap / discard) | 4 | in_progress | P0 | 002 |
-| [008](TICKET-008.md) | USB/IP server session and event loop | 4 | in_progress | P0 | 006, 007 |
+| [007](TICKET-007.md) | usbdevfs URB engine (submit / reap / discard) | 4 | done | P0 | 002 |
+| [008](TICKET-008.md) | USB/IP server session and event loop | 4 | done | P0 | 006, 007 |
 | [009](TICKET-009.md) | Android integration: service, permission, interface claim, JNI | 4 | in_progress | P0 | 004 (architecture gate), 008 |
-| [010](TICKET-010.md) | **[HW]** Windows USB/IP enumeration and controller input | 5 | blocked | P0 | 009 |
+| [010](TICKET-010.md) | **[HW]** Windows USB/IP enumeration and controller input | 5 | done | P0 | 009 |
 | [011](TICKET-011.md) | **[HW]** Background operation during a Moonlight session | 6 | blocked | P1 | 010 |
 | [012](TICKET-012.md) | Cancellation, disconnect, reconnection, re-enumeration | 7 | in_progress | P0 | 008, 009 |
 | [013](TICKET-013.md) | Windows automatic re-attach (usbip-win2 built-in) | 7 | in_progress | P2 | 010 |
@@ -67,7 +67,8 @@ Rules that override convenience:
 | [021](TICKET-021.md) | Rumble / force feedback (interrupt OUT) | 11 | backlog | P3 | 010 |
 | [022](TICKET-022.md) | Publish source to GitHub | 12 | done | P1 | 019 |
 | [023](TICKET-023.md) | BUG: stale selection after adapter mode change | 8 | done | P1 | 014 |
-| [024](TICKET-024.md) | **[HW]** Adapter sends no input reports on Shield in XInput mode | 3 | blocked | P0 | 004 |
+| [024](TICKET-024.md) | **[HW]** Adapter sends no input reports on Shield in XInput mode | 3 | done | P0 | 004 |
+| [025](TICKET-025.md) | BUG: claiming adapter during host detection leaves it silent | 7 | in_progress | P0 | 024 |
 
 Statuses in this table are kept in sync with each ticket's header.
 

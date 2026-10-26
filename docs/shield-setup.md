@@ -41,6 +41,14 @@ While sharing, the controller is **claimed by this app**. Android's own gamepad 
 so the Shield UI and Moonlight do not see the controller. Navigate the Shield with its remote. When
 you stop sharing, Android gets the controller back.
 
+## Troubleshooting
+
+- **Shared but no input on the PC:** stop sharing and press the D-pad. If the Shield menus don't react
+  either, the adapter itself is stuck (seen once, TICKET-024/025). Unplug it, wait 5 s, plug it back
+  in, wait until the controller moves the Shield menus, then start sharing again.
+- **Start sharing only after the controller works in the Shield menus.** Right after plugging in, the
+  adapter cycles through modes for a few seconds while it detects the host.
+
 ## Notes
 
 - The adapter's mode (XInput, DS4, Switch, …) changes its USB vendor/product ID. The app remembers

@@ -1,6 +1,6 @@
 # TICKET-005: [HW] 8BitDo descriptor and transfer inspection (XInput mode)
 
-- **Status:** in_progress
+- **Status:** done
 - **Milestone:** 3 — USB descriptor and transfer inspection
 - **Priority:** P0
 - **Dependencies:** 004
@@ -39,10 +39,16 @@ issues during enumeration and play, with any unsupported request identified.
   to keep the input path quiet).
 
 ## Remaining uncertainties / blockers
-- Windows-driven trace blocked by TICKET-010 (usbip-win2 not yet installed on the PC).
+- None.
 
 ## Evidence so far (2026-10-26)
 - Criterion 1 done: `docs/8bitdo-descriptors.md` (decoded from raw bytes read through the USB/IP
   server, `evidence/005-client-test.txt`).
 - Partial request classification recorded there (client-driven); the Windows-driven URB trace
   (criterion 2) is pending TICKET-010.
+
+## Criteria 2–3 (2026-10-26)
+- Windows-driven trace: `evidence/010-windows-enum-trace.log` (setup bytes and payloads per URB).
+- Classification: every request is forwarded or intercepted as designed; the only failing request is
+  vendor `C1 01 0100 0000 len 20`, which the adapter itself stalls (-EPIPE) and which xusb22 tolerates.
+  Nothing needed for input fails.

@@ -1,0 +1,7 @@
+connected XInput slots: [0]
+slot 0 pkt 0: buttons=[] LT=0 RT=0 L=(0,0) R=(0,0)
+state changes: 1
+buttons seen (0/15): []
+buttons never seen: ['DPAD_UP', 'DPAD_DOWN', 'DPAD_LEFT', 'DPAD_RIGHT', 'START', 'BACK', 'LEFT_THUMB', 'RIGHT_THUMB', 'LEFT_SHOULDER', 'RIGHT_SHOULDER', 'GUIDE', 'A', 'B', 'X', 'Y']
+triggers max: LT=0 RT=0
+stick ranges: LX=[0,0], LY=[0,0], RX=[0,0], RY=[0,0]

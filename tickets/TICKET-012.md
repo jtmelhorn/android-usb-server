@@ -56,3 +56,10 @@ Defined behaviour for every lifecycle event, implemented and tested.
   `same_machine_reimport_evicts_old_session_and_ignores_its_stale_transfers`,
   `session::tests::unlink_*`, and the on-Shield socket test (stop while attached returns < 2 s).
 - Hardware criteria 2–4 blocked by TICKET-004/010.
+
+## Hardware observations (2026-10-26)
+- Adapter re-enumeration while shared (controller slept at 11:47:34): server stopped with
+  `USB device error -19`, service logged `selected device detached`, and when the adapter returned at
+  11:53:51 the service **restarted sharing automatically** (permission retained). Windows did not
+  re-attach on its own within the observation window (default first retry 30 s with back-off) and was
+  re-attached manually. Criterion 2 partially observed; 3 and 4 pending a dedicated run.

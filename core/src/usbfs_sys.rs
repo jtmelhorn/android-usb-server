@@ -70,6 +70,7 @@ pub const USBDEVFS_SUBMITURB: u32 = ioc(IOC_READ, 10, size_of::<UsbdevfsUrb>());
 pub const USBDEVFS_DISCARDURB: u32 = ioc(IOC_NONE, 11, 0);
 pub const USBDEVFS_REAPURBNDELAY: u32 = ioc(IOC_WRITE, 13, size_of::<*mut c_void>());
 pub const USBDEVFS_CLEAR_HALT: u32 = ioc(IOC_READ, 21, size_of::<c_uint>());
+pub const USBDEVFS_RESET: u32 = ioc(IOC_NONE, 20, 0);
 pub const USBDEVFS_GET_SPEED: u32 = ioc(IOC_NONE, 31, 0);
 
 #[cfg(test)]
@@ -92,5 +93,6 @@ mod tests {
         assert_eq!(USBDEVFS_DISCARDURB, 0x0000_550b);
         assert_eq!(USBDEVFS_CLEAR_HALT, 0x8004_5515);
         assert_eq!(USBDEVFS_GET_SPEED, 0x0000_551f);
+        assert_eq!(USBDEVFS_RESET, 0x0000_5514);
     }
 }

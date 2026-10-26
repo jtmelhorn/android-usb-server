@@ -1,6 +1,6 @@
 # TICKET-007: usbdevfs URB engine (submit / reap / discard)
 
-- **Status:** in_progress
+- **Status:** done
 - **Milestone:** 4
 - **Priority:** P0
 - **Dependencies:** 002
@@ -62,3 +62,6 @@ obtained from `UsbDeviceConnection.getFileDescriptor()`.
 - Finding: `USBDEVFS_GET_SPEED` returns `ENOTTY` on the Shield's 4.9 kernel; the fallback (full speed
   for USB 2.0 devices) is correct for this adapter but would misreport a high-speed device.
 - Criterion 3 (reports flowing to Windows) pending TICKET-010 / TICKET-024.
+
+## Criterion 3 (2026-10-26)
+PASS — interrupt-IN reports flow from the adapter through usbdevfs URBs to Windows (TICKET-010).

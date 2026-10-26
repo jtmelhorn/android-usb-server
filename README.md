@@ -25,8 +25,8 @@ Honest summary. Details and evidence are in [`tickets/`](tickets/README.md).
 | Rust USB/IP core: protocol, sessions, unlink, lifecycle, ACL, metrics | Implemented. 62 host tests pass. 64 tests pass **on the Shield** (arm64 and armv7), including the real-socket server test |
 | Android app: service, UI, probe | Implemented. Installs and runs on SHIELD (Android 11) |
 | Shield can claim the 8BitDo adapter's interfaces (milestone 1) | **Verified on hardware**: all 4 interfaces force-claimed without root; server forwards real control/interrupt/unlink transfers to a LAN client (TICKET-004, 007, 008) |
-| Adapter input reports on the Shield | **Not yet seen**: in XInput mode the adapter sent no reports, also not to Android's own driver; Windows-side test pending (TICKET-024) |
-| Windows enumeration and controller input via usbip-win2 | **Not yet verified** (TICKET-010) |
+| Adapter input reports on the Shield | **Verified**: 26,771 reports forwarded in one session. One incident where the adapter got stuck sending nothing until re-plugged (TICKET-024/025) |
+| Windows enumeration and controller input via usbip-win2 | **Verified on hardware** with the signed usbip-win2 0.9.8.1: "Xbox 360 Controller for Windows", all 15 buttons, both triggers and both sticks full range in XInput (TICKET-010) |
 | Moonlight background operation, soak, reconnection on hardware | **Not yet verified** (TICKET-011/012/017) |
 | Latency vs. normal Shield/Moonlight handling | **Not measured.** No improvement is claimed (TICKET-018) |
 | Rumble | Forwarded generically; unverified (TICKET-021) |

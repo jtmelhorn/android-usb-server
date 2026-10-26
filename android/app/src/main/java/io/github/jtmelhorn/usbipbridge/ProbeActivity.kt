@@ -3,6 +3,7 @@ package io.github.jtmelhorn.usbipbridge
 
 import android.app.Activity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ScrollView
 import android.widget.TextView
 import io.github.jtmelhorn.usbipbridge.BridgeState.Phase
@@ -27,6 +28,7 @@ class ProbeActivity : Activity() {
         )
         val run = Ui.button(this, getString(R.string.run_probe)) { runProbe() }
         col.addView(run)
+        col.addView(Ui.button(this, getString(R.string.reset_adapter)) { resetAdapter() })
         logView = Ui.text(this, "", 13f, mono = true)
         col.addView(logView)
         scroll = ScrollView(this).apply { addView(col) }
@@ -37,6 +39,29 @@ class ProbeActivity : Activity() {
     private fun append(s: String) = runOnUiThread {
         logView.append(s + "\n")
         scroll.post { scroll.fullScroll(ScrollView.FOCUS_DOWN) }
+    }
+
+    /** Re-enumerate the adapter without unplugging it (it restarts its host/mode detection). */
+    private fun resetAdapter() {
+        if (BridgeState.phase != Phase.STOPPED && BridgeState.phase != Phase.ERROR) {
+            append("Stop sharing first.")
+            return
+        }
+        val d = UsbDevices.findSelected(this) ?: UsbDevices.list(this).singleOrNull()
+        if (d == null) {
+            append("No device to reset.")
+            return
+        }
+        val usb = UsbDevices.manager(this)
+        if (!usb.hasPermission(d)) {
+            append("No USB permission for ${UsbDevices.vidPid(d)}; grant it on the main screen.")
+            return
+        }
+        val conn = usb.openDevice(d) ?: run { append("openDevice failed"); return }
+        val r = NativeBridge.nativeResetDevice(conn.fileDescriptor)
+        conn.close()
+        append("USB reset of ${UsbDevices.vidPid(d)} ${d.deviceName} -> ${if (r == 0) "OK" else "error $r"}")
+        Log.i(UsbProbe.TAG, "USB reset of ${UsbDevices.vidPid(d)} ${d.deviceName} -> $r")
     }
 
     private fun runProbe() {

@@ -111,8 +111,11 @@ class MainActivity : Activity() {
         if (devices.isEmpty()) deviceList.addView(Ui.text(this, getString(R.string.no_devices), 16f))
         // With exactly one device present, select it unless the selection already matches. The
         // 8BitDo adapter changes VID:PID when it switches mode, which would otherwise leave a stale
-        // selection and a disabled "Grant permission" button (TICKET-023).
-        if (devices.size == 1 && !prefs.matches(devices[0])) prefs.select(devices[0])
+        // selection and a disabled "Grant permission" button (TICKET-023). Only XInput-class devices
+        // are auto-selected: the adapter briefly enumerates in other modes while detecting the host,
+        // and claiming it during that phase left it sending no input until re-plugged (TICKET-025).
+        val single = devices.singleOrNull()
+        if (single != null && !prefs.matches(single) && UsbDevices.isXInput(single)) prefs.select(single)
         val usb = UsbDevices.manager(this)
         for (d in devices) {
             val mark = if (prefs.matches(d)) "✓ " else "   "

@@ -1,6 +1,6 @@
 # TICKET-008: USB/IP server session and event loop
 
-- **Status:** in_progress
+- **Status:** done
 - **Milestone:** 4
 - **Priority:** P0
 - **Dependencies:** 006, 007
@@ -66,3 +66,6 @@ single-threaded `poll()` loop over {client socket, usb fd, wake eventfd/pipe}.
   vendor request, interrupt OUT, interrupt IN queueing, UNLINK — all as specified
   (`evidence/005-client-test.txt`). Server log: `client 192.168.15.133 attached 1-1` …
   `detached` … `discarded 3 pending transfer(s)`.
+
+## Criterion 3 (2026-10-26)
+PASS — interoperates with usbip-win2 0.9.8.1 and Windows `xusb22` (TICKET-010).

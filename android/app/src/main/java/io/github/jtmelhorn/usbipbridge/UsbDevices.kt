@@ -59,6 +59,13 @@ object UsbDevices {
 
     fun vidPid(d: UsbDevice) = "%04x:%04x".format(d.vendorId, d.productId)
 
+    /** Xbox 360-class (XInput) gamepad: first interface is vendor class ff/5d/01. */
+    fun isXInput(d: UsbDevice): Boolean {
+        if (d.interfaceCount == 0) return false
+        val i = d.getInterface(0)
+        return i.interfaceClass == 0xff && i.interfaceSubclass == 0x5d && i.interfaceProtocol == 0x01
+    }
+
     fun label(d: UsbDevice): String {
         val name = listOfNotNull(d.manufacturerName, d.productName).joinToString(" ").ifBlank { "USB device" }
         val ifaces = (0 until d.interfaceCount).joinToString(" ") {

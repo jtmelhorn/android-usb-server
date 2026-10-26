@@ -253,7 +253,15 @@ impl Session {
         };
         match be.submit(&s) {
             Ok(()) => {
-                log_trace!("seq {} submit ep {:#04x} {:?} len {}", cmd.seqnum, endpoint, kind, in_len.max(out_data.len()));
+                log_trace!(
+                    "seq {} submit ep {:#04x} {:?} len {} setup {:02x?} out {:02x?}",
+                    cmd.seqnum,
+                    endpoint,
+                    kind,
+                    in_len.max(out_data.len()),
+                    if kind == TransferKind::Control { &setup[..] } else { &[][..] },
+                    &out_data[..out_data.len().min(16)]
+                );
                 self.pending.insert(
                     cmd.seqnum,
                     Pending { unlink_seqnum: None, is_in, interrupt_in: is_in && kind == TransferKind::Interrupt },
@@ -351,7 +359,13 @@ impl Session {
                 }
             }
         }
-        log_trace!("seq {} complete status {} len {}", seqnum, c.status, c.actual_length);
+        log_trace!(
+            "seq {} complete status {} len {} in {:02x?}",
+            seqnum,
+            c.status,
+            c.actual_length,
+            &c.in_data[..c.in_data.len().min(c.actual_length).min(24)]
+        );
         true
     }
 

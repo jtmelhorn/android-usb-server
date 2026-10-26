@@ -11,6 +11,7 @@
     <string name="refresh">Refresh</string>
     <string name="run_probe">Run 30 s capture</string>
     <string name="save">Save</string>
+    <string name="reset_adapter">Reset adapter (same as re-plugging)</string>
     <string name="port">TCP port (default 3240)</string>
     <string name="allowed_client">Only allow this PC (IP address, empty = any local-network address)</string>
     <string name="verbose">Verbose URB log (diagnostics only; adds per-transfer logging)</string>

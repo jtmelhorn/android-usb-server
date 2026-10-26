@@ -49,3 +49,9 @@ Metrics (all monotonic-clock based, recorded without allocation):
 - Criteria 1–3 implemented: `stats.rs` (`reportIntervalUs`, `turnaroundUs` with n/min/p50/p99/max/avg),
   UI label "report interval (NOT latency)", `stats::tests` + `engine::tests::turnaround_recorded_on_flush`.
 - Hardware reading pending TICKET-010.
+
+## Hardware reading (2026-10-26, verbose logging on)
+- Report interval (rate, not latency): min 0.19 / p50 4.00 / p99 8.01 / max 8.17 ms over 1024 samples.
+- Server turnaround: p50 0.05 / p99 0.18 / max 0.51 ms.
+- PC↔Shield ping (separate tool): 20/20, < 1 ms (Windows `ping` resolution 1 ms).
+- `CLOCK_MONOTONIC` resolution adequate (sub-0.1 ms values observed).

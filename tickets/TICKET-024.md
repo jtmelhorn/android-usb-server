@@ -1,6 +1,6 @@
 # TICKET-024: [HW] Adapter sends no interrupt-IN reports on the Shield in XInput mode
 
-- **Status:** blocked
+- **Status:** done
 - **Milestone:** 3
 - **Priority:** P0
 - **Dependencies:** 004
@@ -51,7 +51,18 @@ Hypotheses, in order of test:
   Windows re-attach per TICKET-013).
 
 ## Remaining uncertainties / blockers
-- **Blocked on:** the Windows-side test (usbip-win2 installed on the PC, user pressing buttons) to
-  test hypothesis 1.
+- Resolved: see Outcome below. Follow-up prevention is TICKET-025.
 - This ticket was opened by the 2026-10-26 hardware session; the user previously reported the
   adapter worked on the Shield (with high latency), probably in a different mode.
+
+## Outcome (2026-10-26)
+- Hypothesis 1 (needs Windows) **rejected**: with Windows' full XInput start-up sequence over USB/IP
+  (`evidence/010-windows-enum-trace.log`: descriptors, SET_CONFIGURATION, SET_INTERFACE 1/2, vendor
+  `C1 01 0100 len 20` → stall, `C1 01 0000 len 8`, `C0 01 0000 len 4`, LED `01 03 02`/`02 08 03`/`01 03 06`,
+  interrupt-IN on `0x81`) the adapter still sent nothing.
+- Controller off/on and `USBDEVFS_RESET` did not help; the adapter re-enumerated each time
+  (devnum 019 → 023) but stayed silent.
+- **Unplug/replug restored it**: D-pad worked in the Shield UI, and through the server Windows received
+  26,771 reports with every control verified (TICKET-010).
+- Conclusion: the adapter had entered a non-reporting state; most likely trigger is the app claiming
+  it during host detection (TICKET-025). Acceptance criteria 1 and 2 met.

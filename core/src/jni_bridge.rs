@@ -138,6 +138,23 @@ pub extern "system" fn Java_io_github_jtmelhorn_usbipbridge_NativeBridge_nativeS
     env.new_string(json).map(|s| s.into_raw()).unwrap_or(std::ptr::null_mut())
 }
 
+/// `USBDEVFS_RESET` on a device fd: a USB port reset, after which the device re-enumerates much
+/// as if it had been unplugged and plugged back in. Returns 0 or a negative errno.
+#[no_mangle]
+pub extern "system" fn Java_io_github_jtmelhorn_usbipbridge_NativeBridge_nativeResetDevice<'l>(
+    _env: JNIEnv<'l>,
+    _cls: JClass<'l>,
+    fd: jint,
+) -> jint {
+    // SAFETY: plain ioctl without argument on a caller-owned fd.
+    let r = unsafe { libc::ioctl(fd, crate::usbfs_sys::USBDEVFS_RESET as _, 0) };
+    if r < 0 {
+        -std::io::Error::last_os_error().raw_os_error().unwrap_or(crate::errno::EIO)
+    } else {
+        0
+    }
+}
+
 #[no_mangle]
 pub extern "system" fn Java_io_github_jtmelhorn_usbipbridge_NativeBridge_nativeVersion<'l>(
     env: JNIEnv<'l>,

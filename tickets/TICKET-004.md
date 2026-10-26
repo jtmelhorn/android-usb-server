@@ -1,6 +1,6 @@
 # TICKET-004: [HW] Shield USB access feasibility with the 8BitDo adapter
 
-- **Status:** blocked
+- **Status:** done
 - **Milestone:** 2 — Shield USB access feasibility
 - **Priority:** P0
 - **Dependencies:** 002
@@ -56,8 +56,7 @@ Physical procedure (needs the user):
   Android 11+ blocks nothing here except devices with audio/MTP handled by system services.
 
 ## Remaining uncertainties / blockers
-- **Blocked on criterion 5 only** — see TICKET-024: the adapter produced no input reports on the
-  Shield in XInput mode, for this app *and* for Android's own `xpad` driver.
+- None. (Criterion 5 was initially blocked by an adapter stuck state, TICKET-024; resolved by a replug.)
 - Whether the 8BitDo adapter's XInput mode is selectable when connected to the Shield (it may
   auto-select a mode based on host OS detection); the Probe records the VID:PID actually presented.
 
@@ -83,3 +82,9 @@ Physical procedure (needs the user):
 
 Architecture gate: criteria 2–4 and 6 prove the forwarding architecture is feasible on this Shield
 without root, so TICKET-009 proceeds.
+
+## Criterion 5 resolution (2026-10-26)
+After the adapter was re-plugged, the app's server on the Shield read **26,771** interrupt-IN reports
+with changing payload from `0x81` while buttons and sticks were operated (verified end-to-end in
+Windows, TICKET-010). Captured by the USB/IP server rather than the probe screen; same Android USB
+access path (`UsbDeviceConnection` fd, force-claimed interfaces).

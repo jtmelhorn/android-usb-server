@@ -35,4 +35,7 @@ object NativeBridge {
     external fun nativeStatus(handle: Long): String
 
     external fun nativeVersion(): String
+
+    /** USB port reset of the device behind [fd]; it re-enumerates. Returns 0 or a negative errno. */
+    external fun nativeResetDevice(fd: Int): Int
 }
